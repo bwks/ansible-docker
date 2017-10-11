@@ -11,7 +11,7 @@ Only YUM flavored OS are currently supported
 Role Variables
 --------------
 
-`docker_repos` - A dictionary of repo data default will add the stable docker repo 
+`docker_repos` A dictionary of repo data. The default will add the stable docker repo.
 
 Dependencies
 ------------
