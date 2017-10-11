@@ -1,0 +1,31 @@
+---
+# defaults file for ansible-docker
+
+docker_repos:
+  stable:
+    name: "stable"
+    description: "Docker CE Stable - $basearch"
+    file: "docker-ce"
+    base_url: "https://download.docker.com/linux/centos/7/$basearch/stable"
+    gpg_key: "https://download.docker.com/linux/centos/gpg"
+    gpg_check: True
+    enabled: True
+
+  stable_debuginfo:
+    name: "stable-debuginfo"
+    description: "Docker CE Stable - Debuginfo $basearch"
+    file: "docker-ce"
+    base_url: "https://download.docker.com/linux/centos/7/debug-$basearch/stable"
+    gpg_key: "https://download.docker.com/linux/centos/gpg"
+    gpg_check: True
+    enabled: False
+
+  stable_source:
+    name: "stable-source"
+    description: "Docker CE Stable - Sources"
+    file: "docker-ce"
+    base_url: "https://download.docker.com/linux/centos/7/source/stable"
+    gpg_key: "https://download.docker.com/linux/centos/gpg"
+    gpg_check: True
+    enabled: False
+
