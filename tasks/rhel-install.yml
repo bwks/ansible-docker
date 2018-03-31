@@ -33,7 +33,7 @@
     gpgkey: "{{ item.value.gpg_key }}"
     gpgcheck: "{{ item.value.gpg_check }}"
     enabled: "{{ item.value.enabled }}"
-  with_dict: "{{ yum.docker_repos }}"
+  with_dict: "{{ rhel.docker_repos }}"
 
 - name: "Install Docker"
   yum:

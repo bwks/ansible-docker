@@ -6,3 +6,7 @@
 
 - include: debian-install.yml
   when: ansible_os_family == "Debian"
+
+- include: users.yml
+  when: docker_users
+
