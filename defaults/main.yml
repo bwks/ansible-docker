@@ -39,4 +39,6 @@ rhel:
 
 docker_users:
 
-
+docker_compose:
+  release: "1.20.1"
+  install: True

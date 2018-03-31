@@ -1,0 +1,13 @@
+---
+- name: "Check if Docker compose is already installed"
+  stat:
+    path: "/usr/local/bin/docker-compose"
+  register: compose_installed
+
+- name: "Download Docker compose release"
+  get_url:
+    url: "https://github.com/docker/compose/releases/download/{{ docker_compose.release }}/docker-compose-Linux-x86_64" 
+    dest: "/usr/local/bin/docker-compose"
+    mode: 0755
+  when: not compose_installed.stat.exists
+

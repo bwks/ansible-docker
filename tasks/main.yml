@@ -10,3 +10,6 @@
 - include: users.yml
   when: docker_users
 
+- include: compose.yml
+  when: docker_compose.install
+
