@@ -1,15 +1,21 @@
 ---
-- name: Clean up old packages
+- name: "Clean up old packages"
   yum:
     name: "{{ item }}"
     state: absent
   with_items:
     - "docker"
+    - "docker-client"
+    - "docker-client-latest"
     - "docker-common"
+    - "docker-latest"
+    - "docker-latest-logrotate"
+    - "docker-logrotate"
     - "docker-selinux"
+    - "docker-engine-selinux"
     - "docker-engine"
 
-- name: Install required packages
+- name: "Install required packages"
   yum:
     name: "{{ item }}"
     state: present
@@ -18,7 +24,7 @@
     - "device-mapper-persistent-data"
     - "lvm2"
 
-- name: Add docker-ce repositories
+- name: "Add docker-ce repositories"
   yum_repository:
     name: "{{ item.value.name }}"
     description: "{{ item.value.description }}"
@@ -27,17 +33,12 @@
     gpgkey: "{{ item.value.gpg_key }}"
     gpgcheck: "{{ item.value.gpg_check }}"
     enabled: "{{ item.value.enabled }}"
-  with_dict: "{{ docker_repos }}"
+  with_dict: "{{ yum.docker_repos }}"
 
-- name: Install Docker
+- name: "Install Docker"
   yum:
     name: "docker-ce"
     state: present
-
-- name: Start and enable docker
-  systemd: 
-    name: docker
-    state: started
-    enabled: True
-
+    update_cache: True
+  notify: "start_docker"
 

@@ -1,2 +1,14 @@
 ---
 # handlers file for ansible-docker
+
+- name: "start_docker" 
+  systemd: 
+    name: "docker"
+    state: started
+    enabled: True
+
+- name: "restart_docker"
+  systemd: 
+    name: "docker"
+    state: restarted
+

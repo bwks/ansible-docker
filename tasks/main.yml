@@ -1,4 +1,8 @@
 ---
 # tasks file for ansible-docker
 
-- include: yum-install.yml
+- include: rhel-install.yml
+  when: ansible_os_family == "RedHat"
+
+- include: debian-install.yml
+  when: ansible_os_family == "Debian"
